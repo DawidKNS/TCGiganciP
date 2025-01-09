@@ -10,15 +10,11 @@ interface Buttons {
 	yearlyCoursesInProgramming: any;
 }
 
-interface Checkboxs {
-}
-
 export class CourseTypePage {
 	readonly page: Page;
 	readonly context: BrowserContext;
 	readonly buttons: Buttons;
 	readonly elements: Elements;
-	readonly checkboxs: Checkboxs;
 
 	constructor(page: Page, context: BrowserContext) {
 		this.page = page;
@@ -27,11 +23,9 @@ export class CourseTypePage {
 			pageTitle: page.locator(".registration__step-title .h4"),
 		};
 		this.buttons = {
-			programming: page.locator('button', { hasText: 'Submit' }),
+			programming: page.locator('button', { hasText: 'PROGRAMOWANIE' }),
 			onlineCourse: page.locator('//*[@value="onlineKinds"]'),
-			yearlyCoursesInProgramming: page.locator(".registration__step-title").locator("'button', { hasText: 'Roczne kursy z programowania' }"),
-		};
-		this.checkboxs = {
+			yearlyCoursesInProgramming: page.locator('button', { hasText: 'Roczne kursy z programowania' }),
 		};
 	}
 

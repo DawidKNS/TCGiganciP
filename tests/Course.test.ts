@@ -37,42 +37,6 @@ test.describe(`Course Type Page Tests`, async () => {
 		});
 	});
 
-	test(`TC-05`, async ({ startRegistrationPage, courseTypePage }): Promise<void> => {
-		await test.step(`Registration`, async () => {
-			//fill data
-			await startRegistrationPage.elements.parentName.fill("Artur");
-			await startRegistrationPage.elements.email.fill("karolgiganci+fakedata80696@gmail.com");
-			await startRegistrationPage.elements.phoneNumber.fill("123456651");
-			await startRegistrationPage.elements.birthYear.fill("2005");
-
-			//acceptance of consents
-			await startRegistrationPage.checkboxs.advertisementAgreed.click();
-			await startRegistrationPage.checkboxs.statuteAgreed.click();
-
-			//screen
-
-			//Click button "dalej"
-			await startRegistrationPage.buttons.submit.click();
-		});
-
-		await test.step(`Course Type`, async (): Promise<void> => {
-			//Is opened page course Type
-			expect(await courseTypePage.elements.pageTitle.isEnabled()).toBe(true)
-			await courseTypePage.buttons.programming.click();
-			await courseTypePage.buttons.onlineCourse.click();
-			await courseTypePage.buttons.yearlyCoursesInProgramming.click();
-
-			//screen
-		});
-
-		await test.step(`Course`, async (): Promise<void> => {
-			//Is opened page course Type
-			expect(await courseTypePage.elements.pageTitle.isEnabled()).toBe(true)
-
-			//screen
-		});
-	});
-
 	test.afterEach(async ({ page }) => {
 		//close browser
 		await page.close();

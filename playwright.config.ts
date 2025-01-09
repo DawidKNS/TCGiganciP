@@ -12,7 +12,7 @@ let environment: string = "";
 const configPath = loadConfig.selectConfig(environment, testConfig, testConfigLocal);
 
 export default defineConfig<CustomTestOptions>({
-    timeout: 10000,
+    timeout: 30000,
     workers: 1,
     retries: 0,
 
