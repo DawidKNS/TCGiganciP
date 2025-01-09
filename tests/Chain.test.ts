@@ -1,7 +1,7 @@
 import test from '@lib/baseTests';
 import { expect } from '@playwright/test';
 
-test.describe(`Course Type Page Tests`, async () => {
+test.describe(`Chain Tests`, async () => {
 
 	test.beforeEach(async ({ runPage, startRegistrationPage }) => {
 		// Go to page
