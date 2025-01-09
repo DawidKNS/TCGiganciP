@@ -29,7 +29,7 @@ test.describe(`Chain Tests`, async () => {
 			await startRegistrationPage.buttons.submit.click();
 		});
 
-		await test.step(`Course Type`, async (): Promise<void> => {
+		await test.step(`Select Course Type`, async (): Promise<void> => {
 			//Is opened page course Type
 			expect(await courseTypePage.elements.pageTitle.isEnabled()).toBe(true)
 			await courseTypePage.buttons.programming.click();
@@ -39,7 +39,7 @@ test.describe(`Chain Tests`, async () => {
 			//screen
 		});
 
-		await test.step(`Course`, async (): Promise<void> => {
+		await test.step(`Select Course`, async (): Promise<void> => {
 			//Is opened page course Type
 			expect(await coursePage.elements.promoContainer.isEnabled()).toBe(true);
 
@@ -56,7 +56,7 @@ test.describe(`Chain Tests`, async () => {
 			).click();
 		});
 
-		await test.step(`Data for course`, async (): Promise<void> => {
+		await test.step(`Set Data For Course`, async (): Promise<void> => {
 			//Is opened page course Type
 			expect(await courseDataPage.elements.inputForm.isEnabled()).toBe(true);
 			await courseDataPage.elements.studentFirstname.fill("Maciej");

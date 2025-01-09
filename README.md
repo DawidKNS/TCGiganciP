@@ -22,3 +22,11 @@ Example:
 ```
 https://playwright.dev/docs/running-tests#run-tests-in-ui-mode
 ```
+
+## How to run test
+- instal node.js -current version
+- open project in visual studio code
+- in visual studio code open terminal and go to folder "TCGiganciP"
+- run command: "npm install"
+- run command: "npx playwright install"
+- run all tests: "npx playwright test"
