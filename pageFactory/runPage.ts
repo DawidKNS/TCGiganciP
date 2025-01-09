@@ -1,4 +1,4 @@
-import { Browser, BrowserContext, Page } from '@playwright/test';
+import { BrowserContext, Page } from '@playwright/test';
 import testConfig from "@config/*";
 
 export class RunPage {

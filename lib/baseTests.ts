@@ -5,7 +5,6 @@ import { CourseTypePage } from "@pages/courseTypePage";
 import { CoursePage } from "@pages/coursePage";
 import { CourseDataPage } from "@pages/courseDataPage";
 
-
 const test = baseTest.extend<{
 	runPage: RunPage;
 	startRegistrationPage: StartRegistrationPage;

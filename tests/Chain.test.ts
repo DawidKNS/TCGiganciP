@@ -11,7 +11,7 @@ test.describe(`Chain Tests`, async () => {
 		expect(await startRegistrationPage.elements.pageTitle.isEnabled()).toBe(true);
 	});
 
-	test(`TC-05`, async ({ startRegistrationPage, courseTypePage, coursePage, courseDataPage, page }): Promise<void> => {
+	test(`TC-05`, async ({ startRegistrationPage, courseTypePage, coursePage, courseDataPage }): Promise<void> => {
 		await test.step(`Registration`, async () => {
 			//fill data
 			await startRegistrationPage.elements.parentName.fill("Artur");
