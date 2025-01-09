@@ -35,15 +35,15 @@ export class StartRegistrationPage {
 			phoneNumber: page.locator('//*[@id="submit-payment"]//*[@name="phoneNumber"]'),
 			birthYear: page.locator('//*[@id="submit-payment"]//*[@name="birthYear"]'),
 			formError: page.locator('//*[@class="formValidation"]//*[@class="formError"]'),
-			errorWindow: page.locator('//*[@id="system-message-container"]/div/h4/div'),
+			errorWindow: page.locator('//*[@id="system-message-container"]'),
 			pageTitle: page.locator(".registration__step-title .h3"),
 		};
 		this.buttons = {
 			submit: page.locator('//*[@id="agreement-step-submit"]'),
 		};
 		this.checkboxs = {
-			advertisementAgreed: page.locator('//*[@id="advertisementAgreed"]'),
-			statuteAgreed: page.locator('//*[@id="statuteAgreed"]'),
+			advertisementAgreed: page.locator('//*[@for="statuteAgreed"]'),
+			statuteAgreed: page.locator('//*[@for="advertisementAgreed"]'),
 		};
 	}
 

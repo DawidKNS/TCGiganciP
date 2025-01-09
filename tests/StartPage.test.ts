@@ -11,25 +11,52 @@ test.describe(`Start Page Tests`, async () => {
 		expect(await startRegistrationPage.elements.pageTitle.isEnabled()).toBe(true);
 	});
 
-	test(`TC-01`, async ({ page, runPage, startRegistrationPage }): Promise<void> => {
+	test(`TC-01`, async ({ startRegistrationPage }): Promise<void> => {
 		//Click button "dalej"
 		await startRegistrationPage.buttons.submit.click();
 
 		//check count errors
 		expect(await startRegistrationPage.countElements(startRegistrationPage.elements.formError)).toBe(6);
+
+		//screen
 	});
 
-	test(`TC-02`, async ({ page, runPage, startRegistrationPage }): Promise<void> => {
-		
+	test(`TC-02`, async ({ startRegistrationPage }): Promise<void> => {
+		//fill field email
+		await startRegistrationPage.elements.email.fill("user#example.com");
+
+		//Click button "dalej"
+		await startRegistrationPage.buttons.submit.click();
+
+		//check email validation
+		//check count errors
+		expect(await startRegistrationPage.countElements(startRegistrationPage.elements.formError)).toBe(1);
+		//check error message
+		expect(await startRegistrationPage.elements.formError.innerText()).toBe("Nieprawidłowy adres e-mail");
+
+		//check message fill all field
+		expect(await startRegistrationPage.elements.errorWindow.innerText()).toBe("Prosimy uzupełnić wszystkie wymagane pola.");
+
+		//screen
 	});
 
-	test(`TC-03`, async ({ page, runPage, startRegistrationPage }): Promise<void> => {
-	});
+	test(`TC-03`, async ({ startRegistrationPage }): Promise<void> => {
+		//fill field email
+		await startRegistrationPage.elements.phoneNumber.fill("12345665");
 
-	test(`TC-04`, async ({ page, runPage, startRegistrationPage }): Promise<void> => {
-	});
+		//Click button "dalej"
+		await startRegistrationPage.buttons.submit.click();
 
-	test(`TC-05`, async ({ page, runPage, startRegistrationPage }): Promise<void> => {
+		//check email validation
+		//check count errors
+		expect(await startRegistrationPage.countElements(startRegistrationPage.elements.formError)).toBe(1);
+		//check error message
+		expect(await startRegistrationPage.elements.formError.innerText()).toBe("Niepoprawny numer telefonu. Numer powinien zawierać 9 cyfr, z opcjonalnym kierunkowym +48 lub +380 na początku.");
+
+		//check message fill all field
+		expect(await startRegistrationPage.elements.errorWindow.innerText()).toBe("Prosimy uzupełnić wszystkie wymagane pola.");
+
+				//screen
 
 	});
 
