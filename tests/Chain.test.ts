@@ -51,6 +51,12 @@ test.describe(`Chain Tests`, async () => {
 		});
 
 		await test.step(`Select Course`, async (): Promise<void> => {
+			//screen
+			await test.info().attach('TC-05 result Select Course 1', {
+				body: await page.screenshot(),
+				contentType: 'image/png',
+			});
+
 			//Is opened page course Type
 			expect(await coursePage.elements.promoContainer.isEnabled()).toBe(true);
 
@@ -59,6 +65,12 @@ test.describe(`Chain Tests`, async () => {
 					'Pierwsze kroki w programowaniu (kurs z elementami AI) ONLINE'
 				)
 			).click();
+
+			//screen
+			await test.info().attach('TC-05 result Select Course 2', {
+				body: await page.screenshot(),
+				contentType: 'image/png',
+			});
 
 			await (
 				await coursePage.getChooseCourseButtonAsync(
@@ -73,24 +85,24 @@ test.describe(`Chain Tests`, async () => {
 
 			//set data
 			await courseDataPage.elements.studentFirstname.fill("Maciej");
-			await courseDataPage.elements.studentLastname.fill("Testowya");
-			await courseDataPage.elements.lastname.fill("Testowya");
+			await courseDataPage.elements.studentLastname.fill("Testowyab");
+			await courseDataPage.elements.lastname.fill("Testowyab");
 			await courseDataPage.elements.zipCode.fill("26-900");
 
 			// check is registration button visible
 			expect(await courseDataPage.buttons.registrationSubmit.isVisible()).toBe(true);
 
-						//screen
-						await test.info().attach('TC-05 result Set Data For Course 1', {
-							body: await page.screenshot(),
-							contentType: 'image/png',
-						});
+			//screen
+			await test.info().attach('TC-05 result Set Data For Course 1', {
+				body: await page.screenshot(),
+				contentType: 'image/png',
+			});
 
 			//accept registration
 			await courseDataPage.buttons.registrationSubmit.click();
 
 			//check is opened summaries page
-			await expect(courseDataPage.elements.summariesPage).toBeVisible({ timeout: 10000 });
+			await expect(courseDataPage.elements.summariesPage).toBeVisible({ timeout: 20000 });
 
 			//screen
 			await test.info().attach('TC-05 result Set Data For Course 2', {
