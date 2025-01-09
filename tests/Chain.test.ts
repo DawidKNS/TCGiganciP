@@ -11,7 +11,7 @@ test.describe(`Chain Tests`, async () => {
 		expect(await startRegistrationPage.elements.pageTitle.isEnabled()).toBe(true);
 	});
 
-	test(`TC-05`, async ({ startRegistrationPage, courseTypePage, coursePage, courseDataPage }): Promise<void> => {
+	test(`TC-05`, async ({ startRegistrationPage, courseTypePage, coursePage, courseDataPage, page }): Promise<void> => {
 		await test.step(`Registration`, async () => {
 			//fill data
 			await startRegistrationPage.elements.parentName.fill("Artur");
@@ -24,6 +24,10 @@ test.describe(`Chain Tests`, async () => {
 			await startRegistrationPage.checkboxs.statuteAgreed.click();
 
 			//screen
+			await test.info().attach('TC-05 result Registration', {
+				body: await page.screenshot(),
+				contentType: 'image/png',
+			});
 
 			//Click button "dalej"
 			await startRegistrationPage.buttons.submit.click();
@@ -31,12 +35,19 @@ test.describe(`Chain Tests`, async () => {
 
 		await test.step(`Select Course Type`, async (): Promise<void> => {
 			//Is opened page course Type
-			expect(await courseTypePage.elements.pageTitle.isEnabled()).toBe(true)
+			expect(await courseTypePage.elements.pageTitle.isEnabled()).toBe(true);
+
+			//select course
 			await courseTypePage.buttons.programming.click();
 			await courseTypePage.buttons.onlineCourse.click();
-			await courseTypePage.buttons.yearlyCoursesInProgramming.click();
 
 			//screen
+			await test.info().attach('TC-05 result Select Course Type', {
+				body: await page.screenshot(),
+				contentType: 'image/png',
+			});
+
+			await courseTypePage.buttons.yearlyCoursesInProgramming.click();
 		});
 
 		await test.step(`Select Course`, async (): Promise<void> => {
@@ -59,18 +70,33 @@ test.describe(`Chain Tests`, async () => {
 		await test.step(`Set Data For Course`, async (): Promise<void> => {
 			//Is opened page course Type
 			expect(await courseDataPage.elements.inputForm.isEnabled()).toBe(true);
+
+			//set data
 			await courseDataPage.elements.studentFirstname.fill("Maciej");
 			await courseDataPage.elements.studentLastname.fill("Testowya");
 			await courseDataPage.elements.lastname.fill("Testowya");
 			await courseDataPage.elements.zipCode.fill("26-900");
 
+			// check is registration button visible
 			expect(await courseDataPage.buttons.registrationSubmit.isVisible()).toBe(true);
-			await courseDataPage.buttons.registrationSubmit.click();
-			//screen
 
+						//screen
+						await test.info().attach('TC-05 result Set Data For Course 1', {
+							body: await page.screenshot(),
+							contentType: 'image/png',
+						});
+
+			//accept registration
+			await courseDataPage.buttons.registrationSubmit.click();
+
+			//check is opened summaries page
 			await expect(courseDataPage.elements.summariesPage).toBeVisible({ timeout: 10000 });
 
 			//screen
+			await test.info().attach('TC-05 result Set Data For Course 2', {
+				body: await page.screenshot(),
+				contentType: 'image/png',
+			});
 		});
 	});
 

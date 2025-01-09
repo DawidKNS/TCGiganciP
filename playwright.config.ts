@@ -24,7 +24,6 @@ export default defineConfig<CustomTestOptions>({
     // Reporter to use
     reporter: [
         ["html"],
-        ["list", { printSteps: true }],
     ],
 
     use: {

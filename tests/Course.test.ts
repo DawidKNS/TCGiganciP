@@ -24,6 +24,10 @@ test.describe(`Course Type Page Tests`, async () => {
 			await startRegistrationPage.checkboxs.statuteAgreed.click();
 
 			//screen
+			await test.info().attach('TC-04 result registration', {
+				body: await page.screenshot(),
+				contentType: 'image/png',
+			});
 
 			//Click button "dalej"
 			await startRegistrationPage.buttons.submit.click();
@@ -34,6 +38,10 @@ test.describe(`Course Type Page Tests`, async () => {
 			expect(await courseTypePage.elements.pageTitle.isEnabled()).toBe(true)
 
 			//screen
+			await test.info().attach('TC-04 result Course Type`', {
+				body: await page.screenshot(),
+				contentType: 'image/png',
+			});
 		});
 	});
 

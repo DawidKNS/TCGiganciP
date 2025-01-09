@@ -11,7 +11,7 @@ test.describe(`Start Page Tests`, async () => {
 		expect(await startRegistrationPage.elements.pageTitle.isEnabled()).toBe(true);
 	});
 
-	test(`TC-01`, async ({ startRegistrationPage }): Promise<void> => {
+	test(`TC-01`, async ({ startRegistrationPage, page }): Promise<void> => {
 		//Click button "dalej"
 		await startRegistrationPage.buttons.submit.click();
 
@@ -19,9 +19,13 @@ test.describe(`Start Page Tests`, async () => {
 		expect(await startRegistrationPage.countElements(startRegistrationPage.elements.formError)).toBe(6);
 
 		//screen
+		await test.info().attach('TC-01 result', {
+			body: await page.screenshot(),
+			contentType: 'image/png',
+		});
 	});
 
-	test(`TC-02`, async ({ startRegistrationPage }): Promise<void> => {
+	test(`TC-02`, async ({ startRegistrationPage, page }): Promise<void> => {
 		//fill field email
 		await startRegistrationPage.elements.email.fill("user#example.com");
 
@@ -38,9 +42,13 @@ test.describe(`Start Page Tests`, async () => {
 		expect(await startRegistrationPage.elements.errorWindow.innerText()).toBe("Prosimy uzupełnić wszystkie wymagane pola.");
 
 		//screen
+		await test.info().attach('TC-02 result', {
+			body: await page.screenshot(),
+			contentType: 'image/png',
+		});
 	});
 
-	test(`TC-03`, async ({ startRegistrationPage }): Promise<void> => {
+	test(`TC-03`, async ({ startRegistrationPage, page }): Promise<void> => {
 		//fill field email
 		await startRegistrationPage.elements.phoneNumber.fill("12345665");
 
@@ -56,8 +64,11 @@ test.describe(`Start Page Tests`, async () => {
 		//check message fill all field
 		expect(await startRegistrationPage.elements.errorWindow.innerText()).toBe("Prosimy uzupełnić wszystkie wymagane pola.");
 
-				//screen
-
+		//screen
+		await test.info().attach('TC-03 result', {
+			body: await page.screenshot(),
+			contentType: 'image/png',
+		});
 	});
 
 	test.afterEach(async ({ page }) => {

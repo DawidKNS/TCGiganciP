@@ -29,4 +29,4 @@ https://playwright.dev/docs/running-tests#run-tests-in-ui-mode
 - in visual studio code open terminal and go to folder "TCGiganciP"
 - run command: "npm install"
 - run command: "npx playwright install"
-- run all tests: "npx playwright test"
+- run all tests: "npx playwright test" - when the tests are finished, it will run ise report automatically
